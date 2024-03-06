@@ -1,16 +1,22 @@
-# flutter_authentication
+# ITP Tracker
 
-A new Flutter project.
+ITP Tracker este o aplicație destinată stațiilor de ITP pentru gestionarea și urmărirea mașinilor înregistrate, oferind notificări pentru datele ITP iminente sau expirate.
 
-## Getting Started
+## Caracteristici
 
-This project is a starting point for a Flutter application.
+- **Gestionarea mașinilor**: Stațiile de ITP pot gestiona o listă de mașini înregistrate, inclusiv detalii precum numărul de înmatriculare, marca, modelul și data ultimului ITP.
+- **Urmărirea datelor ITP**: Aplicația permite urmărirea datelor ITP ale fiecărei mașini înregistrate și afișează cât timp a mai rămas până la următorul ITP sau cât timp a trecut de la expirarea ultimului ITP.
+- **Notificări pentru ITP-ul iminent sau expirat**: Utilizatorii primesc notificări atunci când data ITP-ului unei mașini se apropie sau a expirat, pentru a-i avertiza să ia măsuri.
 
-A few resources to get you started if this is your first Flutter project:
+## Cum să folosești
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Pentru a utiliza aplicația, urmează acești pași:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. **Înregistrare și autentificare**: Creează un cont sau autentifică-te pentru a începe gestionarea mașinilor.
+2. **Adăugare mașină**: Adaugă mașinile pentru care dorești să urmărești datele ITP.
+3. **Urmărire ITP**: Privește și actualizează datele ITP ale mașinilor tale pentru a te asigura că sunt în conformitate cu cerințele legale.
+4. **Primiți notificări**: Fii la curent cu datele ITP-ului fiecărei mașini și primește notificări atunci când este necesară acțiune.
+
+## Probleme și sugestii
+
+Dacă ai întâlnit probleme sau ai sugestii pentru îmbunătățirea aplicației, te rugăm să deschizi o [problemă](link către pagina de probleme) pe GitHub.
