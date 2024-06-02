@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_authentication/screens/home_screen.dart' as HomeScreen; 
+import 'package:flutter_authentication/screens/home_screen.dart' as HomeScreen;
 import 'package:flutter_authentication/utils/color_utils.dart';
 
-import 'package:flutter_authentication/screens/signup_screen.dart' as SignUpScreen;
+import 'package:flutter_authentication/screens/signup_screen.dart'
+    as SignUpScreen;
 import '../reusable_widgets/reusable_widget.dart';
+import 'reset_password.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -38,24 +40,27 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(
                   height: 30,
                 ),
-                reusableTextField("Enter UserName", Icons.person_outline, false,
+                reusableTextField("Enter Username", Icons.person_outline, false,
                     _emailTextController),
                 const SizedBox(
                   height: 30,
                 ),
-                reusableTextField("Enter Password", Icons.lock_outline, false,
+                reusableTextField("Enter Password", Icons.lock_outline, true,
                     _passwordTextController),
                 const SizedBox(
                   height: 30,
                 ),
-                signInSignUpButton(context, true, () {
+                forgetPassword(context),
+                firebaseUIButton(context, "Sign In", () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen.HomeScreen()));
+                        MaterialPageRoute(builder: (context) {
+                      return const HomeScreen.HomeScreen();
+                    }));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });
@@ -77,8 +82,10 @@ class _SignInScreenState extends State<SignInScreen> {
             style: TextStyle(color: Colors.white70)),
         GestureDetector(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const SignUpScreen.SignUpScreen()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SignUpScreen.SignUpScreen()));
           },
           child: const Text(
             " Sign Up",
@@ -86,6 +93,23 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
         )
       ],
+    );
+  }
+
+  Widget forgetPassword(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 35,
+      alignment: Alignment.bottomRight,
+      child: TextButton(
+        child: const Text(
+          "Forgot Password?",
+          style: TextStyle(color: Colors.white70),
+          textAlign: TextAlign.right,
+        ),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ResetPassword())),
+      ),
     );
   }
 }
