@@ -4,8 +4,8 @@ const axios = require('axios');
 
 admin.initializeApp();
 
-const nexmoApiKey = '92168ba4';
-const nexmoApiSecret = 'pEvblKuoZ4FAdXGF';
+const nexmoApiKey = '2237d34a';
+const nexmoApiSecret = 'TeVpND1rUGXTDL8P';
 const nexmoFrom = 'Vonage APIs';
 
 async function sendITPReminders() {
