@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication/screens/home_screen.dart' as HomeScreen;
-import 'package:flutter_authentication/utils/color_utils.dart';
-
 import 'package:flutter_authentication/screens/signup_screen.dart'
     as SignUpScreen;
+import 'package:flutter_authentication/utils/color_utils.dart';
+
 import '../reusable_widgets/reusable_widget.dart';
 import 'reset_password.dart';
 

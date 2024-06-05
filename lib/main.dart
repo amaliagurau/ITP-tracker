@@ -1,13 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication/screens/signin_screen.dart';
 
+import 'firebase_options.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (kIsWeb) {
-    await Firebase.initializeApp(options: const FirebaseOptions(apiKey: "AIzaSyCeVAem4qv92HlfFMKr7PpzIan4xw_LKwM", appId:  "1:1001736280920:web:97d2cbd5af22554240232d", messagingSenderId: "1001736280920", projectId: "flutter-signin-57326"));
-  }
+  // if (kIsWeb) {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  // }/
   runApp(const MyApp());
 }
 

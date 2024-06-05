@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication/screens/add_car_screen.dart';
 import 'package:flutter_authentication/service/database.dart';
+import 'package:http/http.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,10 +13,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final TextEditingController _ownerNameController = new TextEditingController();
-  final TextEditingController _phoneNumberController = new TextEditingController();
-  final TextEditingController _licensePlateController = new TextEditingController();
-  final TextEditingController _periodOfITPController = new TextEditingController();
+  final TextEditingController _ownerNameController =
+      new TextEditingController();
+  final TextEditingController _phoneNumberController =
+      new TextEditingController();
+  final TextEditingController _licensePlateController =
+      new TextEditingController();
+  final TextEditingController _periodOfITPController =
+      new TextEditingController();
   final TextEditingController _dateController = new TextEditingController();
 
   Stream? CarStream;
@@ -132,6 +137,12 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.sms, color: Colors.white),
+            onPressed: () {
+              sendITPReminders();
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.logout, color: Colors.white),
             onPressed: () {
@@ -370,6 +381,23 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         _dateController.text = _picked.toString().split(" ")[0];
       });
+    }
+  }
+
+  Future<void> sendITPReminders() async {
+    final url =
+        'https://us-central1-flutter-signin-57326.cloudfunctions.net/testSendITPReminders'; // Replace with your Cloud Function URL
+
+    try {
+      final response = await get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        print('Function executed successfully: ${response.body}');
+      } else {
+        print(
+            'Failed to execute ITP Reminders function: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error occurred while executing ITP Reminders function: $e');
     }
   }
 }
